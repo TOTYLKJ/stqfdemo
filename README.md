@@ -1,20 +1,20 @@
-# STQF地理空间数据处理平台
+# STQF Geospatial Data Processing Platform
 
-STQF是一个完整的地理空间数据处理平台，集成了前端可视化界面和后端数据处理服务，支持安全的空间轨迹查询、雾服务器管理和数据可视化等功能。
+STQF is a comprehensive geospatial data processing platform that integrates frontend visualization interfaces and backend data processing services, supporting secure spatial trajectory queries, fog server management, and data visualization features.
 
-## 项目概述
+## Project Overview
 
-STQF平台由以下主要组件构成：
+The STQF platform consists of the following main components:
 
-- **前端应用**：基于React和TypeScript的Web界面
-- **后端服务**：基于Django的RESTful API服务
-- **数据处理**：支持轨迹数据处理和空间查询
-- **安全机制**：集成同态加密和时空验证
-- **雾服务器**：分布式数据处理节点
+- **Frontend Application**: Web interface based on React and TypeScript
+- **Backend Service**: RESTful API service based on Django
+- **Data Processing**: Support for trajectory data processing and spatial queries
+- **Security Mechanism**: Integration of homomorphic encryption and spatiotemporal verification
+- **Fog Servers**: Distributed data processing nodes
 
-## 技术栈
+## Technology Stack
 
-### 前端技术栈
+### Frontend Stack
 - React 18
 - TypeScript 4.9
 - Ant Design 5.0
@@ -24,7 +24,7 @@ STQF平台由以下主要组件构成：
 - ECharts 5.6
 - Axios
 
-### 后端技术栈
+### Backend Stack
 - Python 3.8+
 - Django 3.2+
 - MySQL 5.7+
@@ -32,196 +32,196 @@ STQF平台由以下主要组件构成：
 - Docker
 - Kubernetes
 
-## 项目结构
+## Project Structure
 
 ```
 STQF/
-├── apps/                    # 应用模块
-│   ├── stv/                # 时空验证模块
-│   └── sstp/               # 安全时空轨迹处理模块
-├── database/               # 数据库相关
-│   ├── migrations/         # 数据库迁移文件
-│   ├── schemas/            # 数据库模式
-│   └── indexes/            # 数据库索引
-├── deployment/             # 部署配置
-│   ├── docker/            # Docker配置
-│   ├── scripts/           # 部署脚本
-│   └── kubernetes/        # K8s配置
-├── stqf_project/           # Django项目配置
-│   ├── settings/          # 项目设置
-│   └── urls.py            # URL路由
-├── stqf-backend/           # 后端服务
-│   ├── apps/              # 后端应用
-│   ├── core/              # 核心功能
-│   ├── tasks/             # 后台任务
-│   └── tests/             # 测试用例
-└── stqf-frontend/          # 前端应用
-    ├── public/            # 静态资源
-    ├── src/               # 源代码
-    └── package.json       # 依赖配置
+├── apps/                    # Application modules
+│   ├── stv/                # Spatiotemporal verification module
+│   └── sstp/               # Secure spatiotemporal trajectory processing module
+├── database/               # Database related
+│   ├── migrations/         # Database migration files
+│   ├── schemas/            # Database schemas
+│   └── indexes/            # Database indexes
+├── deployment/             # Deployment configuration
+│   ├── docker/            # Docker configuration
+│   ├── scripts/           # Deployment scripts
+│   └── kubernetes/        # K8s configuration
+├── stqf_project/           # Django project configuration
+│   ├── settings/          # Project settings
+│   └── urls.py            # URL routing
+├── stqf-backend/           # Backend service
+│   ├── apps/              # Backend applications
+│   ├── core/              # Core functionality
+│   ├── tasks/             # Background tasks
+│   └── tests/             # Test cases
+└── stqf-frontend/          # Frontend application
+    ├── public/            # Static resources
+    ├── src/               # Source code
+    └── package.json       # Dependency configuration
 ```
 
-## 核心功能
+## Core Features
 
-### 1. 安全空间查询
-- 基于同态加密的查询参数保护
-- 时空轨迹验证
-- 分布式查询处理
-- 结果解密和验证
+### 1. Secure Spatial Queries
+- Query parameter protection based on homomorphic encryption
+- Spatiotemporal trajectory verification
+- Distributed query processing
+- Result decryption and verification
 
-### 2. 雾服务器管理
-- 分布式节点管理
-- 负载均衡
-- 状态监控
-- 关键词分组
+### 2. Fog Server Management
+- Distributed node management
+- Load balancing
+- Status monitoring
+- Keyword grouping
 
-### 3. 数据可视化
-- 交互式地图
-- 轨迹展示
-- 热力图
-- 统计分析
+### 3. Data Visualization
+- Interactive maps
+- Trajectory display
+- Heat maps
+- Statistical analysis
 
-### 4. 数据管理
-- 轨迹数据导入/导出
-- 数据质量检查
-- 批量操作
-- 数据维护
+### 4. Data Management
+- Trajectory data import/export
+- Data quality checking
+- Batch operations
+- Data maintenance
 
-## 环境要求
+## Environment Requirements
 
-### 开发环境
+### Development Environment
 - Node.js 16.x+
 - Python 3.8+
 - MySQL 5.7+
 - Cassandra 3.11+
-- Docker (可选)
+- Docker (optional)
 
-### 生产环境
-- 同开发环境要求
-- Kubernetes (可选)
+### Production Environment
+- Same as development environment requirements
+- Kubernetes (optional)
 - Nginx
 
-## 安装与部署
+## Installation and Deployment
 
-### 1. 后端服务部署
+### 1. Backend Service Deployment
 
 ```bash
-# 克隆项目
-git clone [项目地址]
+# Clone the project
+git clone [project URL]
 
-# 进入后端目录
+# Enter backend directory
 cd stqf-backend
 
-# 创建虚拟环境
+# Create virtual environment
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate     # Windows
 
-# 安装依赖
+# Install dependencies
 pip install -r requirements.txt
 
-# 初始化数据库
+# Initialize database
 python manage.py migrate
 
-# 启动服务
+# Start service
 python manage.py runserver
 ```
 
-### 2. 前端应用部署
+### 2. Frontend Application Deployment
 
 ```bash
-# 进入前端目录
+# Enter frontend directory
 cd stqf-frontend
 
-# 安装依赖
+# Install dependencies
 npm install
 
-# 开发环境启动
+# Start development environment
 npm start
 
-# 生产环境构建
+# Build for production
 npm run build
 ```
 
-### 3. Docker部署
+### 3. Docker Deployment
 
 ```bash
-# 构建镜像
+# Build images
 docker-compose build
 
-# 启动服务
+# Start services
 docker-compose up -d
 ```
 
-## 配置说明
+## Configuration Guide
 
-### 数据库配置
-- MySQL配置：`stqf-backend/apps/query/setup/init_db.py`
-- Cassandra配置：`stqf-backend/apps/query/README.md`
+### Database Configuration
+- MySQL configuration: `stqf-backend/apps/query/setup/init_db.py`
+- Cassandra configuration: `stqf-backend/apps/query/README.md`
 
-### 环境变量
+### Environment Variables
 ```bash
-# MySQL配置
+# MySQL configuration
 export MYSQL_HOST=127.0.0.1
 export MYSQL_PORT=3306
 export MYSQL_DATABASE=gko_db
 export MYSQL_USER=root
 export MYSQL_PASSWORD=sl201301
 
-# Cassandra配置
+# Cassandra configuration
 export CASSANDRA_HOSTS=localhost
 export CASSANDRA_PORT=9042
 export CASSANDRA_USER=cassandra
 export CASSANDRA_PASSWORD=cassandra
 
-# Docker环境
+# Docker environment
 export DOCKER_ENV=false
 ```
 
-## 开发指南
+## Development Guide
 
-### 代码规范
-- 前端：ESLint + Prettier
-- 后端：PEP 8
-- 提交信息：Conventional Commits
+### Code Standards
+- Frontend: ESLint + Prettier
+- Backend: PEP 8
+- Commit messages: Conventional Commits
 
-### 测试
-- 前端：Jest + React Testing Library
-- 后端：Django Test Framework
+### Testing
+- Frontend: Jest + React Testing Library
+- Backend: Django Test Framework
 
-### 文档
-- API文档：Swagger/OpenAPI
-- 组件文档：Storybook
-- 开发文档：Markdown
+### Documentation
+- API documentation: Swagger/OpenAPI
+- Component documentation: Storybook
+- Development documentation: Markdown
 
-## 安全说明
+## Security Notes
 
-- 使用JWT进行身份验证
-- 同态加密保护查询参数
-- 基于角色的访问控制
-- 安全的数据传输
+- JWT-based authentication
+- Homomorphic encryption for query parameter protection
+- Role-based access control
+- Secure data transmission
 
-## 维护与支持
+## Maintenance and Support
 
-- 问题报告：[Issue Tracker]
-- 文档更新：[Documentation]
-- 技术支持：[Support]
+- Issue reporting: [Issue Tracker]
+- Documentation updates: [Documentation]
+- Technical support: [Support]
 
-## 许可证
+## License
 
-[许可证类型]
+[License Type]
 
-## 贡献指南
+## Contribution Guide
 
-1. Fork项目
-2. 创建特性分支
-3. 提交更改
-4. 推送到分支
-5. 创建Pull Request
+1. Fork the project
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
-## 版本历史
+## Version History
 
-- v1.0.0 - 初始版本
-  - 基础功能实现
-  - 安全查询支持
-  - 数据可视化 
+- v1.0.0 - Initial version
+  - Basic functionality implementation
+  - Secure query support
+  - Data visualization 
