@@ -53,7 +53,7 @@ const Login: React.FC = () => {
       }}
     >
       <Card style={{ width: 400 }}>
-        <h2 style={{ textAlign: 'center', marginBottom: 30 }}>GKO Trajectory Query System</h2>
+        <h2 style={{ textAlign: 'center', marginBottom: 30 }}>STQF</h2>
         <Form name='login' onFinish={onFinish}>
           <Form.Item
             name='email'
