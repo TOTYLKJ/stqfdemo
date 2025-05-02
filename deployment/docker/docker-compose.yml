@@ -1,0 +1,200 @@
+version: '3.8'
+
+services:
+  # 中央服务器
+  central-server:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/backend/Dockerfile
+    container_name: central-server
+    environment:
+      - DJANGO_SETTINGS_MODULE=gko_project.settings.docker
+      - CENTRAL_SERVER=True
+      - MYSQL_HOST=host.docker.internal
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=gko_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=sl201301
+    ports:
+      - "8000:8000"
+    networks:
+      - fog1_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 雾服务器 1
+  cassandra-1:
+    image: cassandra:4.1
+    container_name: fog1-cassandra
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=fog1_cluster
+      - CASSANDRA_DC=dc1
+      - CASSANDRA_RACK=rack1
+      - MAX_HEAP_SIZE=512M
+      - HEAP_NEWSIZE=100M
+    volumes:
+      - cassandra_data_1:/var/lib/cassandra
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - fog1_network
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'SHOW VERSION'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  fog-server-1:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/backend/Dockerfile
+    container_name: fog1-server
+    depends_on:
+      cassandra-1:
+        condition: service_healthy
+      central-server:
+        condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=gko_project.settings.docker
+      - CASSANDRA_HOSTS=cassandra-1
+      - FOG_SERVER_ID=1
+      - MYSQL_HOST=host.docker.internal
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=gko_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=sl201301
+      - CENTRAL_SERVER_URL=http://central-server:8000
+      - CENTRAL_SERVER_TIMEOUT=60
+    ports:
+      - "8001:8000"
+    networks:
+      - fog1_network
+      - central_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 雾服务器 2
+  cassandra-2:
+    image: cassandra:4.1
+    container_name: fog2-cassandra
+    ports:
+      - "9043:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=fog2_cluster
+      - CASSANDRA_DC=dc1
+      - CASSANDRA_RACK=rack1
+      - MAX_HEAP_SIZE=512M
+      - HEAP_NEWSIZE=100M
+    volumes:
+      - cassandra_data_2:/var/lib/cassandra
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - fog1_network
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'SHOW VERSION'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  fog-server-2:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/backend/Dockerfile
+    container_name: fog2-server
+    depends_on:
+      cassandra-2:
+        condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=gko_project.settings.docker
+      - CASSANDRA_HOSTS=cassandra-2
+      - FOG_SERVER_ID=2
+      - MYSQL_HOST=host.docker.internal
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=gko_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=sl201301
+    ports:
+      - "8002:8000"
+    networks:
+      - fog1_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # 雾服务器 3
+  cassandra-3:
+    image: cassandra:4.1
+    container_name: fog3-cassandra
+    ports:
+      - "9044:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=fog3_cluster
+      - CASSANDRA_DC=dc1
+      - CASSANDRA_RACK=rack1
+      - MAX_HEAP_SIZE=512M
+      - HEAP_NEWSIZE=100M
+    volumes:
+      - cassandra_data_3:/var/lib/cassandra
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - fog1_network
+    healthcheck:
+      test: ["CMD-SHELL", "cqlsh -e 'SHOW VERSION'"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  fog-server-3:
+    build:
+      context: ../..
+      dockerfile: deployment/docker/backend/Dockerfile
+    container_name: fog3-server
+    depends_on:
+      cassandra-3:
+        condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=gko_project.settings.docker
+      - CASSANDRA_HOSTS=cassandra-3
+      - FOG_SERVER_ID=3
+      - MYSQL_HOST=host.docker.internal
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=gko_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=sl201301
+    ports:
+      - "8003:8000"
+    networks:
+      - fog1_network
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  central_network:
+    driver: bridge
+  fog1_network:
+    driver: bridge
+
+volumes:
+  cassandra_data_1:
+  cassandra_data_2:
+  cassandra_data_3: 

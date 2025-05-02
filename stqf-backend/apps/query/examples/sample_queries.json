@@ -1,0 +1,48 @@
+[
+    {
+        "keyword": 90,
+        "morton_range": {
+            "min": "51",
+            "max": "53"
+        },
+        "grid_range": {
+            "min_x": 3,
+            "min_y": 1,
+            "min_z": 3,
+            "max_x": 3,
+            "max_y": 2,
+            "max_z": 3
+        },
+        "point_range": {
+            "lat_min": 30,
+            "lon_min": 130,
+            "time_min": 40000,
+            "lat_max": 40,
+            "lon_max": 150,
+            "time_max": 50000
+        }
+    },
+    {
+        "keyword": 6,
+        "morton_range": {
+            "min": "51",
+            "max": "53"
+        },
+        "grid_range": {
+            "min_x": 3,
+            "min_y": 1,
+            "min_z": 3,
+            "max_x": 3,
+            "max_y": 2,
+            "max_z": 3
+        },
+        "point_range": {
+            "lat_min": 30,
+            "lon_min": 130,
+            "time_min": 40000,
+            "lat_max": 40,
+            "lon_max": 150,
+            "time_max": 50000
+        }
+    }
+] 

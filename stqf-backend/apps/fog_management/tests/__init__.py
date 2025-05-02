@@ -1,0 +1,3 @@
+"""
+Fog Management application tests
+""" 

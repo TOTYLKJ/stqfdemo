@@ -1,0 +1,113 @@
+.container {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100%;
+}
+
+.treeCard {
+  width: 100%;
+  margin-bottom: 24px;
+  min-height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.treeContainer {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  overflow: auto;
+  min-height: 450px;
+}
+
+.nodeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
+}
+
+.node {
+  background-color: #1890ff;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: white;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.node:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.leafNode {
+  background-color: #52c41a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.nodeId {
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 95%;
+  padding: 4px;
+  text-align: center;
+}
+
+/* 叶子节点的文本样式 */
+.leafNode .nodeId {
+  font-size: 12px;
+  line-height: 1.2;
+  white-space: normal;
+  word-break: keep-all;
+}
+
+.childrenContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+  max-width: 800px;
+}
+
+.buttonContainer {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .treeCard {
+    min-height: 400px;
+  }
+
+  .childrenContainer {
+    max-width: 100%;
+  }
+}
+
+/* 第三层节点的特殊样式 */
+.node[data-level='2'] {
+  background-color: #52c41a;
+  font-size: 12px;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  word-break: keep-all;
+  white-space: normal; /* 允许文本换行 */
+}

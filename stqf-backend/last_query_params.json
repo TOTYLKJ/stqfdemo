@@ -1,0 +1,24 @@
+{
+    "rid": 1,
+    "keyword": 6,
+    "morton_range": {
+        "min": "51",
+        "max": "54"
+    },
+    "grid_range": {
+        "min_x": 1.0,
+        "min_y": 1.0,
+        "min_z": 3.0,
+        "max_x": 2.0,
+        "max_y": 1.0,
+        "max_z": 4.0
+    },
+    "point_range": {
+        "lat_min": 35.5,
+        "lon_min": 135.5,
+        "time_min": 40000,
+        "lat_max": 36.0,
+        "lon_max": 137.0,
+        "time_max": 80000
+    }
+}

@@ -1,0 +1,49 @@
+.dashboard {
+  padding: 24px;
+
+  .selectedRow {
+    background-color: #e6f7ff;
+  }
+
+  :global {
+    .ant-table-row-selected > td {
+      background-color: #e6f7ff !important;
+    }
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.visualContainer {
+  min-height: 400px;
+  width: 100%;
+}
+
+.chartContainer {
+  height: 400px;
+  width: 100%;
+}
+
+.mapContainer {
+  height: 400px;
+  width: 100%;
+  border-radius: 4px;
+}
+
+// 响应式布局
+@media screen and (max-width: 768px) {
+  .dashboard {
+    padding: 16px;
+  }
+
+  .visualContainer,
+  .chartContainer,
+  .mapContainer {
+    height: 300px;
+  }
+} 
