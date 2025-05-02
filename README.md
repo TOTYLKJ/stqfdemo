@@ -4,7 +4,7 @@ STQF是一个完整的地理空间数据处理平台，集成了前端可视化�
 
 ## 项目概述
 
-GKO平台由以下主要组件构成：
+STQF平台由以下主要组件构成：
 
 - **前端应用**：基于React和TypeScript的Web界面
 - **后端服务**：基于Django的RESTful API服务
