@@ -1,6 +1,6 @@
-# GKO地理空间数据处理平台
+# STQF地理空间数据处理平台
 
-GKO是一个完整的地理空间数据处理平台，集成了前端可视化界面和后端数据处理服务，支持安全的空间轨迹查询、雾服务器管理和数据可视化等功能。
+STQF是一个完整的地理空间数据处理平台，集成了前端可视化界面和后端数据处理服务，支持安全的空间轨迹查询、雾服务器管理和数据可视化等功能。
 
 ## 项目概述
 
@@ -35,7 +35,7 @@ GKO平台由以下主要组件构成：
 ## 项目结构
 
 ```
-GKO/
+STQF/
 ├── apps/                    # 应用模块
 │   ├── stv/                # 时空验证模块
 │   └── sstp/               # 安全时空轨迹处理模块
@@ -47,15 +47,15 @@ GKO/
 │   ├── docker/            # Docker配置
 │   ├── scripts/           # 部署脚本
 │   └── kubernetes/        # K8s配置
-├── gko_project/           # Django项目配置
+├── stqf_project/           # Django项目配置
 │   ├── settings/          # 项目设置
 │   └── urls.py            # URL路由
-├── gko-backend/           # 后端服务
+├── stqf-backend/           # 后端服务
 │   ├── apps/              # 后端应用
 │   ├── core/              # 核心功能
 │   ├── tasks/             # 后台任务
 │   └── tests/             # 测试用例
-└── gko-frontend/          # 前端应用
+└── stqf-frontend/          # 前端应用
     ├── public/            # 静态资源
     ├── src/               # 源代码
     └── package.json       # 依赖配置
@@ -110,7 +110,7 @@ GKO/
 git clone [项目地址]
 
 # 进入后端目录
-cd gko-backend
+cd stqf-backend
 
 # 创建虚拟环境
 python -m venv venv
@@ -131,7 +131,7 @@ python manage.py runserver
 
 ```bash
 # 进入前端目录
-cd gko-frontend
+cd stqf-frontend
 
 # 安装依赖
 npm install
@@ -156,8 +156,8 @@ docker-compose up -d
 ## 配置说明
 
 ### 数据库配置
-- MySQL配置：`gko-backend/apps/query/setup/init_db.py`
-- Cassandra配置：`gko-backend/apps/query/README.md`
+- MySQL配置：`stqf-backend/apps/query/setup/init_db.py`
+- Cassandra配置：`stqf-backend/apps/query/README.md`
 
 ### 环境变量
 ```bash
