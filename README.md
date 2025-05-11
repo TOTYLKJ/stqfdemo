@@ -1,10 +1,10 @@
-# STQF Geospatial Data Processing Platform
+# STQCF - A System for Privacy-Preserving Semantic Trajectory Query Based on Cloud-Fog Collaboration
 
-STQF is a comprehensive geospatial data processing platform that integrates frontend visualization interfaces and backend data processing services, supporting secure spatial trajectory queries, fog server management, and data visualization features.
+STQCF is a comprehensive geospatial data processing platform that integrates frontend visualization interfaces and backend data processing services, supporting secure spatial trajectory queries, fog server management, and data visualization features.
 
 ## Project Overview
 
-The STQF platform consists of the following main components:
+The STQCF platform consists of the following main components:
 
 - **Frontend Application**: Web interface based on React and TypeScript
 - **Backend Service**: RESTful API service based on Django
@@ -35,7 +35,7 @@ The STQF platform consists of the following main components:
 ## Project Structure
 
 ```
-STQF/
+STQCF/
 ├── apps/                    # Application modules
 │   ├── stv/                # Spatiotemporal verification module
 │   └── sstp/               # Secure spatiotemporal trajectory processing module
@@ -47,15 +47,15 @@ STQF/
 │   ├── docker/            # Docker configuration
 │   ├── scripts/           # Deployment scripts
 │   └── kubernetes/        # K8s configuration
-├── stqf_project/           # Django project configuration
+├── stqcf_project/           # Django project configuration
 │   ├── settings/          # Project settings
 │   └── urls.py            # URL routing
-├── stqf-backend/           # Backend service
+├── stqcf-backend/           # Backend service
 │   ├── apps/              # Backend applications
 │   ├── core/              # Core functionality
 │   ├── tasks/             # Background tasks
 │   └── tests/             # Test cases
-└── stqf-frontend/          # Frontend application
+└── stqcf-frontend/          # Frontend application
     ├── public/            # Static resources
     ├── src/               # Source code
     └── package.json       # Dependency configuration
@@ -110,7 +110,7 @@ STQF/
 git clone [project URL]
 
 # Enter backend directory
-cd stqf-backend
+cd stqcf-backend
 
 # Create virtual environment
 python -m venv venv
@@ -131,7 +131,7 @@ python manage.py runserver
 
 ```bash
 # Enter frontend directory
-cd stqf-frontend
+cd stqcf-frontend
 
 # Install dependencies
 npm install
@@ -156,8 +156,8 @@ docker-compose up -d
 ## Configuration Guide
 
 ### Database Configuration
-- MySQL configuration: `stqf-backend/apps/query/setup/init_db.py`
-- Cassandra configuration: `stqf-backend/apps/query/README.md`
+- MySQL configuration: `stqcf-backend/apps/query/setup/init_db.py`
+- Cassandra configuration: `stqcf-backend/apps/query/README.md`
 
 ### Environment Variables
 ```bash

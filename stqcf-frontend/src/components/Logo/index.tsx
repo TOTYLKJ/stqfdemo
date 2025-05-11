@@ -7,9 +7,9 @@ const Logo: React.FC = () => {
     <div className='logo-container'>
       <DatabaseOutlined className='logo-icon' />
       <div className='logo-text'>
-        <div className='logo-title'>STQF</div>
+        <div className='logo-title'>STQCF</div>
         <div className='logo-subtitle'>
-          Privacy-preserving semantic trajectory query system based on GKO tree technology
+          A System for Privacy-Preserving Semantic Trajectory Query Based on Cloud-Fog Collaboration
         </div>
       </div>
     </div>
