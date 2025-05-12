@@ -1,4 +1,4 @@
-# STQCF - A System for Privacy-Preserving Semantic Trajectory Query Based on Cloud-Fog Collaboration
+# STQCF - A Privacy-Preserving Semantic Trajectory Query System in Cloud-Fog Collaborative Environments
 
 STQCF is a comprehensive geospatial data processing platform that integrates frontend visualization interfaces and backend data processing services, supporting secure spatial trajectory queries, fog server management, and data visualization features.
 
